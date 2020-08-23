@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Investment Calculator" />
+        <title>Investment Calculator</title>
+        <!-- <link rel="icon" href="favicon.ico" /> -->
+        <link rel="stylesheet" href="dependency/bootstrap.min.css" media="all" />
+        <link rel="stylesheet" href="css/styles.css" media="all" />
+    </head>
+    <body>
+        <h1>Investment Calculator</h1>
+
+        <div class="container">
+
+          <div class="col-md-12">
+            <h2>Input Amounts Here</h2>
+            <form>
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <label for="startingBal">Starting Balance</label>
+                <input type="number" class="form-control" id="startingBalance" value="1000">
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <label for="expectedReturn">Expected Return (%)</label>
+                <input type="number" class="form-control" id="expectedReturn" value="6">
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <label for="monthlyDep">Monthly Deposit</label>
+                <input type="number" class="form-control" id="monthlyDeposit" value="100">
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <label for="duration">Duration (years)</label>
+                <input type="number" class="form-control" id="duration" value="5" />
+              </div>
+            </div>
+              
+              <button type="submit" class="btn btn-primary my-4 m-auto" id="submit">
+                Calculate Balance
+              </button>
+            </form>
+          </div>
+    
+          <div class="col-md-8">
+            <h2>Growth Chart</h2>
+            <h5 class="chartDiv"></h5>
+            <div id="chartContainer">
+              <canvas id="myChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <footer role="contentinfo">
+            <p>
+                Copyright&copy;
+                <a href="http://jaiimeriios.com/">Jaime Alejandro Rios</a>
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>
+            </p>
+        </footer>
+
+        <script src="script.js"></script>
+        <script src="dependency/chartjs.min.js"></script>
+    </body>
+</html>
