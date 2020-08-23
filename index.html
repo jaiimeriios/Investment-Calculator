@@ -5,11 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="Investment Calculator" />
         <title>Investment Calculator</title>
-        <!-- <link rel="icon" href="favicon.ico" /> -->
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="dependency/bootstrap.min.css" media="all" />
+        <link rel="stylesheet" href="dependency/fontawesome.min.css" media="all" />
+
         <link rel="stylesheet" href="css/styles.css" media="all" />
     </head>
     <body>
+
+        <!-- TODOS:
+            add styles
+            add tooltips
+        -->
+
         <h1>Investment Calculator</h1>
 
         <div class="container">
@@ -19,7 +28,7 @@
             <form>
               <div class="row">
                 <div class="col-sm-6 col-md-3">
-                  <label for="startingBal">Starting Balance</label>
+                  <label for="startingBal"><i class="far fa-money-bill-alt"></i> Starting Balance</label>
                 <input type="number" class="form-control" id="startingBalance" value="1000">
               </div>
               <div class="col-sm-6 col-md-3">
@@ -60,7 +69,7 @@
             </p>
         </footer>
 
-        <script src="script.js"></script>
+        <script src="js/script.js"></script>
         <script src="dependency/chartjs.min.js"></script>
     </body>
 </html>
