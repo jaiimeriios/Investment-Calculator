@@ -18,49 +18,52 @@
             add styles
             add tooltips
         -->
-
-        <h1>Investment Calculator</h1>
-
+        
         <div class="container">
+          <h1 class="text-center my-4">Investment Calculator</h1>
+          
+          <div class="col-md-12 inputs">
+            <h2 class="text-center mb-3"><i class="far fa-money-bill-alt"></i> Input Amounts</h2>
 
-          <div class="col-md-12">
-            <h2>Input Amounts Here</h2>
             <form>
               <div class="row">
                 <div class="col-sm-6 col-md-3">
-                  <label for="startingBal"><i class="far fa-money-bill-alt"></i> Starting Balance</label>
+                  <label for="startingBal"><i class="fas fa-dollar-sign"></i> Starting Balance</label>
                 <input type="number" class="form-control" id="startingBalance" value="1000">
               </div>
               <div class="col-sm-6 col-md-3">
-                <label for="expectedReturn">Expected Return (%)</label>
+                <label for="expectedReturn"><i class="fas fa-percentage"></i> Expected Return (%)</label>
                 <input type="number" class="form-control" id="expectedReturn" value="6">
               </div>
               <div class="col-sm-6 col-md-3">
-                <label for="monthlyDep">Monthly Deposit</label>
+                <label for="monthlyDep"><i class="far fa-calendar-alt"></i> Monthly Deposit</label>
                 <input type="number" class="form-control" id="monthlyDeposit" value="100">
               </div>
               <div class="col-sm-6 col-md-3">
-                <label for="duration">Duration (years)</label>
+                <label for="duration"><i class="far fa-clock"></i> Duration (years)</label>
                 <input type="number" class="form-control" id="duration" value="5" />
               </div>
             </div>
-              
-              <button type="submit" class="btn btn-primary my-4 m-auto" id="submit">
-                Calculate Balance
-              </button>
+            <div class="row mt-4">
+                <button type="submit" class="btn btn-primary my-4 m-auto" id="submit">
+                    Calculate Balance
+                </button>
+            </div>
             </form>
           </div>
     
-          <div class="col-md-8">
-            <h2>Growth Chart</h2>
+          <div class="col-md-12 inputs mt-4">
+            <h2 class="text-center mb-3"><i class="far fa-chart-bar"></i> Growth Chart</h2>
+
             <h5 class="chartDiv"></h5>
             <div id="chartContainer">
               <canvas id="myChart"></canvas>
             </div>
           </div>
         </div>
-        <footer role="contentinfo">
-            <p>
+
+        <footer class="col-md-12">
+            <p class="text-center">
                 Copyright&copy;
                 <a href="http://jaiimeriios.com/">Jaime Alejandro Rios</a>
                 <script>
