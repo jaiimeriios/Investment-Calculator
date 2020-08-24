@@ -4,7 +4,7 @@
 
 /* colors */
 :root {
-    --main-color: #53b123;
+    --main-color: #32c800;
     --secondary-color: #607d8b;
 }
 
@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-    height: 80vh;
+    min-height: 90vh;
 }
 
 h1 {
@@ -54,4 +54,24 @@ label {
     font-size: 1rem;
     font-weight: 400;
     color:#000;
+}
+
+
+#report-section {
+    opacity: 0;
+    transition: all 400ms ease;
+}
+
+
+.inputs h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.inputs h3 span {
+    font-weight: 500;
+}
+
+#myChart {
+    height: 300px;
 }

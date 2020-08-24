@@ -4,6 +4,7 @@ const submit = document.getElementById('submit')
 
 submit.addEventListener('click', (e) => {
     calculate(e)
+    submit.innerHTML = 'Re-Calculate Value'
 })
 
 function calculate(e) {
@@ -11,14 +12,10 @@ function calculate(e) {
 
     let labels = []
     let balances = []
-    let startingBalance = parseInt(
-        document.querySelector('#startingBalance').value
-    )
-    const expectedReturn =
-        parseInt(document.querySelector('#expectedReturn').value) / 100
-    const monthlyDeposit = parseInt(
-        document.querySelector('#monthlyDeposit').value
-    )
+
+    let startingBalance = parseInt(document.querySelector('#startingBalance').value)
+    const expectedReturn = parseInt(document.querySelector('#expectedReturn').value) / 100
+    const monthlyDeposit = parseInt(document.querySelector('#monthlyDeposit').value)
     const duration = parseInt(document.querySelector('#duration').value)
     const monthlyReturn = expectedReturn / 12
 
@@ -26,45 +23,35 @@ function calculate(e) {
         return
     }
 
-    // Create formatter for USD
-    const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 2,
-    })
-
     // Loop through items to update starting balance and build out table rows
-    for (let i = 1; i <= duration * 12; i++) {
+    for (let i = 0; i <= duration * 12; i++) {
         startingBalance = startingBalance * (1 + monthlyReturn) + monthlyDeposit
         if (i % 12 === 0) {
             const year = i / 12
             balances.push(startingBalance.toFixed(2))
             labels.push(`Year ${year}`)
         }
-
-        createChart(labels, balances)
     }
 
-    // Make table and chart appear and have the total presented at the bottom of the screen
+    showGrowthDiv(startingBalance, duration, labels, balances)
+}
 
-    document.querySelector('canvas').style.display = 'block'
-    if (document.querySelector('#finalValue')) {
-        document.querySelector('#finalValue').innerHTML =
-            `Total after ${duration} years: ` +
-            formatter.format(startingBalance)
-    } else {
-        const finalValue = document.createElement('h3')
-        finalValue.setAttribute('id', 'finalValue')
-        finalValue.innerHTML =
-            `Total after ${duration} years: ` +
-            formatter.format(startingBalance)
-        document.querySelector('.chartDiv').appendChild(finalValue)
-    }
-    submit.innerHTML = 'Re-Calculate Value'
+
+// Make content and chart appear
+function showGrowthDiv(startingBalance, duration, labels, balances) {
+
+    document.querySelector('#report-section').style.opacity = 1
+        
+    let endBalance = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, }).format(startingBalance)
+
+    document.querySelector('#totalValue').innerHTML =
+    `Total Value after ${duration} years: <span>${endBalance}</span>`
+
+    createChart(labels, balances)
 }
 
 // Function to create chart
-function createChart(labels, data) {
+function createChart(labels, balances) {
     // Destroy previous canvas
     document.getElementById('myChart').remove()
 
@@ -82,21 +69,38 @@ function createChart(labels, data) {
             datasets: [
                 {
                     label: 'Growth',
-                    data: data,
+                    data: balances,
                     borderColor: 'rgb(50, 200, 0)',
                     backgroundColor: 'rgba(50, 200, 0, .3)',
                     borderWidth: 2,
-                    responsive: true,
-                    maintainAspectRatio: true,
+                    pointRadius: 4,
+                    hoverRadius: 4,
+                    hoverBorderWidth: 2,
+                    hitRadius: 2,
+                    pointStyle:'circle',
+                    pointBackgroundColor: 'rgb(50, 200, 0)'
                 },
             ],
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 yAxes: [
                     {
                         ticks: {
                             beginAtZero: false,
+                            fontColor: 'rgb(50, 200, 0)',
+                            beginAtZero: true
+                        },
+                    },
+                ],
+                xAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: false,
+                            fontColor: 'rgb(50, 200, 0)',
+                            
                         },
                     },
                 ],
