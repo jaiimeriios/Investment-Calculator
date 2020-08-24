@@ -37,7 +37,8 @@ h1 {
     color: var(--main-color);
 }
 
-.inputs h2 .far {
+.inputs h2 .far,
+.inputs h2 .fas {
     font-size: 1.25rem;
     position: relative;
     top: -1px;
@@ -57,11 +58,12 @@ label {
 }
 
 
-#report-section {
+#report-section,
+#yearBreakdow {
     opacity: 0;
+    height: 0;
     transition: all 400ms ease;
 }
-
 
 .inputs h3 {
     font-size: 1.5rem;
@@ -74,4 +76,14 @@ label {
 
 #myChart {
     height: 300px;
+}
+
+#breakdow p {
+    color: var(--main-color);
+    font-size: .9rem;
+}
+
+#breakdow p span {
+    color: #000;
+    font-size: 1rem;
 }

@@ -23,25 +23,40 @@ function calculate(e) {
         return
     }
 
-    // Loop through items to update starting balance and build out table rows
-    for (let i = 0; i <= duration * 12; i++) {
+    let breakdow = document.querySelector('#breakdow')
+
+    // if (breakdow.hasChildNodes()){    
+    //     breakdow.remove(newDiv)
+    // }
+    
+    // Loop through items to update starting balance and build 
+    for (let i = 1; i <= duration * 12; i++) {
+
         startingBalance = startingBalance * (1 + monthlyReturn) + monthlyDeposit
+        var newDiv = document.createElement('p');
+        newDiv.classList = 'col-md-2'
+
         if (i % 12 === 0) {
             const year = i / 12
             balances.push(startingBalance.toFixed(2))
             labels.push(`Year ${year}`)
+            newDiv.innerHTML =
+            `Year ${year} <span>$` +  startingBalance.toFixed(2) + `</span>`
+            breakdow.appendChild(newDiv)
         }
     }
-
     showGrowthDiv(startingBalance, duration, labels, balances)
 }
 
 
 // Make content and chart appear
 function showGrowthDiv(startingBalance, duration, labels, balances) {
-
+    
     document.querySelector('#report-section').style.opacity = 1
-        
+    document.querySelector('#report-section').style.height = 'inherit'
+    document.querySelector('#yearBreakdow').style.opacity = 1
+    document.querySelector('#yearBreakdow').style.height = 'inherit'
+
     let endBalance = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, }).format(startingBalance)
 
     document.querySelector('#totalValue').innerHTML =
