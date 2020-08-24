@@ -10,4 +10,4 @@ Investment calculator simple js app - calculate a specific parameter for an inve
 
 Fix years breakdows bug, remove previous content when re-calculating
 
-![Investment Calculator Image](https://raw.githubusercontent.com/jaiimeriios/Investment-Calculator/master/img/demo.png)
+![Investment Calculator Image](https://raw.githubusercontent.com/jaiimeriios/Investment-Calculator/master/img/demoImg.png)
