@@ -48,7 +48,7 @@ function removePreviousNumbers() {
 
 // Loop through items to update starting balance and build 
 function buildValues(labels, balances, duration, startingBalance, monthlyReturn, monthlyDeposit) {
-    for (let i = 1; i <= duration * 12; i++) {
+    for (let i = 0; i <= duration * 12; i++) {
 
         startingBalance = startingBalance * (1 + monthlyReturn) + monthlyDeposit
         const newDiv = document.createElement('p');
@@ -58,22 +58,23 @@ function buildValues(labels, balances, duration, startingBalance, monthlyReturn,
             const year = i / 12
             balances.push(startingBalance.toFixed(2))
             labels.push(`Year ${year}`)
-            newDiv.innerHTML = `Year ${year} <span>$` + startingBalance.toFixed(2) + `</span>`
+
+            balanceEnd = Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+            }).format(startingBalance)
+            
+            newDiv.innerHTML = `Year ${year} <span> ${balanceEnd} </span>`
             breakdow.appendChild(newDiv)
         }
     }
-    getEndBalance(startingBalance, duration)
+    getEndBalance(balanceEnd, duration)
 }
 
-function getEndBalance(startingBalance, duration) {
-    let endBalance = Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 2,
-    }).format(startingBalance)
-
+function getEndBalance(balanceEnd, duration) {
     document.querySelector('#totalValue').innerHTML =
-        `Total Value after ${duration} years: <span>${endBalance}</span>`
+        `Total Value after ${duration} years: <span>${balanceEnd}</span>`
 }
 
 // Create chart
