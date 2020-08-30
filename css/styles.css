@@ -145,3 +145,8 @@ input {
     color: var(--txt);
     font-size: 1rem;
 }
+
+
+p.copyright {
+    color: var(--txt);
+}
