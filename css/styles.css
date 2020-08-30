@@ -4,12 +4,66 @@
 
 /* colors */
 :root {
-    --main-color: #32c800;
-    --secondary-color: #607d8b;
+}
+
+:root {
+    --main: #32c800;
+    --main-dark: #6eb656;
+    --heading-green1: #70b359;
+    --heading-green2: #5ece38;
+    --heading-green3: #5ba243;
+    --white: #fff;
+    --black: #000;
+    --gray0: #f5f5f5;
+    --gray1: #dedede;
+    --gray2: #2c3138;
+    --gray3: #26292f;
+    --gray4: #212329;
+}
+
+.light {
+    --bg-nav: linear-gradient(to right, var(--heading-green1), var(--heading-green2));
+    --bg: var(--gray0);
+    --bg-inputs: var(--white);
+    --main-color: var(--main);
+    --title: var(--white);
+    --txt: var(--gray4 );
+    --input: var(--white);
+    --linkBG: var(--white)
+}
+
+.dark {
+    --bg-nav: linear-gradient(to right, var(--heading-green3), var(--heading-green1));
+    --bg: var(--gray4  );
+    --bg-inputs: var(--gray3);
+    --main-color: var(--main-dark);
+    --title: var(--gray1);
+    --txt: var(--gray0);
+    --input: var(--gray1);
+    --linkBG: var(--gray2)
 }
 
 body {
-    background-color: #f5f5f5;
+    background: var(--bg);
+    transition: background 600ms ease-in-out, color 1000ms ease-in-out;
+}
+
+.toggle-btns {
+    margin: 1rem 1rem -1rem 0;
+}
+
+.toggle-btns a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    padding: 2px 3px 5px 3px;
+    position: relative;
+    background-color: var(--linkBG);
+    transition: all 200ms ease-in;
+}
+
+.toggle-btns a:hover {
+    background-color: var(--main-color)
 }
 
 .container {
@@ -17,9 +71,9 @@ body {
 }
 
 h1 {
-    background-image: linear-gradient(45deg, rgb(112 179 89), rgb(94 206 56));
+    background: var(--bg-nav);
     box-shadow: rgba(0, 0, 0, 0.05) 0px 3px 15px 0px;
-    color: #fff;
+    color: var(--title);
     border-radius: 4px;
     padding: 0.5rem 0;
     font-size: 1.8rem;
@@ -28,7 +82,7 @@ h1 {
 .inputs {
     padding: 1rem;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: var(--bg-inputs);
     box-shadow: rgba(0, 0, 0, 0.03) 0px 3px 15px 0px;
 }
 
@@ -54,7 +108,11 @@ h1 {
 label {
     font-size: 1rem;
     font-weight: 400;
-    color: #000;
+    color: var(--txt);
+}
+
+input {
+    background-color: var(--input) !important;
 }
 
 #report-section,
@@ -67,6 +125,7 @@ label {
 .inputs h3 {
     font-size: 1.5rem;
     font-weight: 400;
+    color: var(--txt);
 }
 
 .inputs h3 span {
@@ -83,6 +142,6 @@ label {
 }
 
 #breakdow p span {
-    color: #000;
+    color: var(--txt);
     font-size: 1rem;
 }

@@ -23,14 +23,14 @@ function calculate(e) {
         return
     }
 
-    showGrowthDiv(startingBalance, duration, labels, balances)
+    showGrowthDiv()
     removePreviousNumbers()
     buildValues(labels, balances, duration, startingBalance, monthlyReturn, monthlyDeposit)
     createChart(labels, balances)
 }
 
 // Show content
-function showGrowthDiv(startingBalance, duration) {
+function showGrowthDiv() {
     document.querySelector('#report-section').style.opacity = 1
     document.querySelector('#report-section').style.height = 'inherit'
     document.querySelector('#yearBreakdow').style.opacity = 1
@@ -69,27 +69,22 @@ function buildValues(labels, balances, duration, startingBalance, monthlyReturn,
             breakdow.appendChild(newDiv)
         }
     }
-    getEndBalance(balanceEnd, duration)
-}
-
-function getEndBalance(balanceEnd, duration) {
-    document.querySelector('#totalValue').innerHTML =
-        `Total Value after ${duration} years: <span>${balanceEnd}</span>`
+    document.querySelector('#totalValue').innerHTML = `Total Value after ${duration} years: <span>${balanceEnd}</span>`
 }
 
 // Create chart
 function createChart(labels, balances) {
     // Destroy previous canvas
-    document.getElementById('myChart').remove()
+    document.getElementById('growthChart').remove()
 
     // Create new canvas
     let canvas = document.createElement('canvas')
-    canvas.setAttribute('id', 'myChart')
+    canvas.setAttribute('id', 'growthChart')
     document.querySelector('#chartContainer').appendChild(canvas)
 
     // Fill canvas with chart
-    var ctx = document.getElementById('myChart').getContext('2d')
-    var myChart = new Chart(ctx, {
+    var ctx = document.getElementById('growthChart').getContext('2d')
+    var growthChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
@@ -109,7 +104,8 @@ function createChart(labels, balances) {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
+            aspectRatio:4,
             scales: {
                 yAxes: [{
                     ticks: {

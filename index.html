@@ -20,8 +20,13 @@
         light/dark theme
     -->
 
+    <div class="toggle-btns text-right">
+        <a id="toggleLight" href="javascript:void(0)">☀</a>
+        <a id="toggleDark" href="javascript:void(0)">🌑</a>
+    </div>
+
     <div class="container">
-        <h1 class="text-center my-3">Investment Calculator</h1>
+        <h1 class="text-center mb-3">Investment Calculator</h1>
 
         <div class="col-md-12 inputs">
             <h2 class="text-center mb-3"><i class="far fa-money-bill-alt"></i> Input Amounts</h2>
@@ -59,7 +64,7 @@
             <h3 class="text-center mb-3" id="totalValue"></h3>
             <h5 class="chartDiv"></h5>
             <div id="chartContainer">
-                <canvas id="myChart"></canvas>
+                <canvas id="growthChart"></canvas>
             </div>
         </div>
 
@@ -80,7 +85,8 @@
     </footer>
 
     <script src="dependency/chartjs.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 
 </html>
