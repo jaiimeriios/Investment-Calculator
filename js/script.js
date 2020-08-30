@@ -62,10 +62,10 @@ function buildValues(labels, balances, duration, startingBalance, monthlyReturn,
             breakdow.appendChild(newDiv)
         }
     }
-    getEndBalance(startingBalance)
+    getEndBalance(startingBalance, duration)
 }
 
-function getEndBalance(startingBalance) {
+function getEndBalance(startingBalance, duration) {
     let endBalance = Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
