@@ -23,60 +23,60 @@ function calculate(e) {
         return
     }
 
-    removePreviousNumbers()
-
-    // Loop through items to update starting balance and build 
-    for (let i = 1; i <= duration * 12; i++) {
-        
-        var newDiv = document.createElement('p');
-        
-        startingBalance = startingBalance * (1 + monthlyReturn) + monthlyDeposit
-        newDiv.classList = 'col-md-2'
-        
-        if (i % 12 === 0) {
-            
-            const year = i / 12
-            balances.push(startingBalance.toFixed(2))
-            
-            labels.push(`Year ${year}`)
-            newDiv.innerHTML =
-            `Year ${year} <span>$` +  startingBalance.toFixed(2) + `</span>`
-            breakdow.appendChild(newDiv)
-        }
-    }
-    
     showGrowthDiv(startingBalance, duration, labels, balances)
+    removePreviousNumbers()
+    buildValues(labels, balances, duration, startingBalance, monthlyReturn, monthlyDeposit)
+    createChart(labels, balances)
 }
 
-
-
-function removePreviousNumbers() {
-
-    document.querySelectorAll('#breakdow p').forEach(
-        (elem) => {
-            elem.style.display = 'none'
-        }
-    )
-}
-
-
-// Make content and chart appear
-function showGrowthDiv(startingBalance, duration, labels, balances) {
-    
+// Show content
+function showGrowthDiv(startingBalance, duration) {
     document.querySelector('#report-section').style.opacity = 1
     document.querySelector('#report-section').style.height = 'inherit'
     document.querySelector('#yearBreakdow').style.opacity = 1
     document.querySelector('#yearBreakdow').style.height = 'inherit'
-
-    let endBalance = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, }).format(startingBalance)
-
-    document.querySelector('#totalValue').innerHTML =
-    `Total Value after ${duration} years: <span>${endBalance}</span>`
-
-    createChart(labels, balances)
 }
 
-// Function to create chart
+// remove previous values
+function removePreviousNumbers() {
+    document.querySelectorAll('#breakdow p').forEach(
+        (elem) => {
+            elem.remove()
+        }
+    )
+}
+
+// Loop through items to update starting balance and build 
+function buildValues(labels, balances, duration, startingBalance, monthlyReturn, monthlyDeposit) {
+    for (let i = 1; i <= duration * 12; i++) {
+
+        startingBalance = startingBalance * (1 + monthlyReturn) + monthlyDeposit
+        const newDiv = document.createElement('p');
+        newDiv.classList = 'col-md-2'
+
+        if (i % 12 === 0) {
+            const year = i / 12
+            balances.push(startingBalance.toFixed(2))
+            labels.push(`Year ${year}`)
+            newDiv.innerHTML = `Year ${year} <span>$` + startingBalance.toFixed(2) + `</span>`
+            breakdow.appendChild(newDiv)
+        }
+    }
+    getEndBalance(startingBalance)
+}
+
+function getEndBalance(startingBalance) {
+    let endBalance = Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2,
+    }).format(startingBalance)
+
+    document.querySelector('#totalValue').innerHTML =
+        `Total Value after ${duration} years: <span>${endBalance}</span>`
+}
+
+// Create chart
 function createChart(labels, balances) {
     // Destroy previous canvas
     document.getElementById('myChart').remove()
@@ -92,44 +92,38 @@ function createChart(labels, balances) {
         type: 'line',
         data: {
             labels: labels,
-            datasets: [
-                {
-                    label: 'Growth',
-                    data: balances,
-                    borderColor: 'rgb(50, 200, 0)',
-                    backgroundColor: 'rgba(50, 200, 0, .3)',
-                    borderWidth: 2,
-                    pointRadius: 4,
-                    hoverRadius: 4,
-                    hoverBorderWidth: 2,
-                    hitRadius: 2,
-                    pointStyle:'circle',
-                    pointBackgroundColor: 'rgb(50, 200, 0)'
-                },
-            ],
+            datasets: [{
+                label: 'Growth',
+                data: balances,
+                borderColor: 'rgb(50, 200, 0)',
+                backgroundColor: 'rgba(50, 200, 0, .3)',
+                borderWidth: 2,
+                pointRadius: 4,
+                hoverRadius: 4,
+                hoverBorderWidth: 2,
+                hitRadius: 2,
+                pointStyle: 'circle',
+                pointBackgroundColor: 'rgb(50, 200, 0)'
+            },],
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                yAxes: [
-                    {
-                        ticks: {
-                            beginAtZero: false,
-                            fontColor: 'rgb(50, 200, 0)',
-                            beginAtZero: true
-                        },
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false,
+                        fontColor: 'rgb(50, 200, 0)',
+                        beginAtZero: true
                     },
-                ],
-                xAxes: [
-                    {
-                        ticks: {
-                            beginAtZero: false,
-                            fontColor: 'rgb(50, 200, 0)',
-                            
-                        },
+                },],
+                xAxes: [{
+                    ticks: {
+                        beginAtZero: false,
+                        fontColor: 'rgb(50, 200, 0)',
+
                     },
-                ],
+                },],
             },
             legend: {
                 display: false,

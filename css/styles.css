@@ -17,16 +17,16 @@ body {
 }
 
 h1 {
-    background-image: linear-gradient(46deg, rgb(0, 172, 126) 0%, rgb(81, 204, 38) 100%);
+    background-image: linear-gradient(45deg, rgb(112 179 89), rgb(94 206 56));
     box-shadow: rgba(0, 0, 0, 0.05) 0px 3px 15px 0px;
     color: #fff;
     border-radius: 4px;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
     font-size: 1.8rem;
 }
 
 .inputs {
-    padding: 1.5rem 1rem;
+    padding: 1rem;
     border-radius: 4px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.03) 0px 3px 15px 0px;
@@ -47,16 +47,15 @@ h1 {
 
 .fas,
 .far {
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: var(--main-color);
 }
 
 label {
     font-size: 1rem;
     font-weight: 400;
-    color:#000;
+    color: #000;
 }
-
 
 #report-section,
 #yearBreakdow {
@@ -80,7 +79,7 @@ label {
 
 #breakdow p {
     color: var(--main-color);
-    font-size: .9rem;
+    font-size: 0.9rem;
 }
 
 #breakdow p span {

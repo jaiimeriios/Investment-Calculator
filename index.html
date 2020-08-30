@@ -1,86 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Investment Calculator" />
-        <title>Investment Calculator</title>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="dependency/bootstrap.min.css" media="all" />
-        <link rel="stylesheet" href="dependency/fontawesome.min.css" media="all" />
 
-        <link rel="stylesheet" href="css/styles.css" media="all" />
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Investment Calculator" />
+    <title>Investment Calculator</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="dependency/bootstrap.min.css" media="all" />
+    <link rel="stylesheet" href="dependency/fontawesome.min.css" media="all" />
+    <link rel="stylesheet" href="css/styles.css" media="all" />
+</head>
 
-        <!-- TODOS:
-            add tooltips
-            years breakdows - fix bug
-        -->
-        
-        <div class="container">
-          <h1 class="text-center my-3">Investment Calculator</h1>
-          
-          <div class="col-md-12 inputs">
+<body>
+
+    <!-- TODOS:
+        add tooltips
+        light/dark theme
+    -->
+
+    <div class="container">
+        <h1 class="text-center my-3">Investment Calculator</h1>
+
+        <div class="col-md-12 inputs">
             <h2 class="text-center mb-3"><i class="far fa-money-bill-alt"></i> Input Amounts</h2>
-
             <form>
-              <div class="row">
-                <div class="col-sm-6 col-md-3">
-                  <label for="startingBal"><i class="fas fa-dollar-sign"></i> Starting Balance</label>
-                <input type="number" class="form-control" id="startingBalance" value="1000" min="1" max="999999999">
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <label for="expectedReturn"><i class="fas fa-percentage"></i> Expected Return (%)</label>
-                <input type="number" class="form-control" id="expectedReturn" value="6" min="1" max="100">
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <label for="monthlyDep"><i class="far fa-calendar-alt"></i> Monthly Deposit</label>
-                <input type="number" class="form-control" id="monthlyDeposit" value="100" min="1" max="999999999">
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <label for="duration"><i class="far fa-clock"></i> Duration (years)</label>
-                <input type="number" class="form-control" id="duration" value="5" min="1" max="999">
-              </div>
-            </div>
-            <div class="row mt-4">
-                <button type="submit" class="btn btn-primary my-4 m-auto" id="submit">
-                    Calculate Balance
-                </button>
-            </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <label for="startingBal"><i class="fas fa-dollar-sign"></i> Starting Balance</label>
+                        <input type="number" class="form-control" id="startingBalance" value="1000" min="1"
+                            max="999999999">
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label for="expectedReturn"><i class="fas fa-percentage"></i> Expected Return (%)</label>
+                        <input type="number" class="form-control" id="expectedReturn" value="6" min="1" max="100">
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label for="monthlyDep"><i class="far fa-calendar-alt"></i> Monthly Deposit</label>
+                        <input type="number" class="form-control" id="monthlyDeposit" value="100" min="1"
+                            max="999999999">
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label for="duration"><i class="far fa-clock"></i> Duration (years)</label>
+                        <input type="number" class="form-control" id="duration" value="5" min="1" max="999">
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <button type="submit" class="btn btn-primary my-4 m-auto" id="submit">
+                        Calculate Balance
+                    </button>
+                </div>
             </form>
-          </div>
-    
-          <div class="col-md-12 inputs mt-4" id="report-section">
+        </div>
+
+        <div class="col-md-12 inputs mt-4" id="report-section">
             <h2 class="text-center mb-3"><i class="far fa-chart-bar"></i> Growth Chart</h2>
             <h3 class="text-center mb-3" id="totalValue"></h3>
             <h5 class="chartDiv"></h5>
             <div id="chartContainer">
-              <canvas id="myChart"></canvas>
+                <canvas id="myChart"></canvas>
             </div>
-            
-          </div>
-          
-          <div class="col-md-12 inputs mt-4" id="yearBreakdow">
-            <h2 class="text-center mb-3"><i class="fas fa-chart-line"></i> Year Amount</h2>
-              <div class="row" id="breakdow"></div>
-            </div>
-            
         </div>
 
+        <div class="col-md-12 inputs mt-4" id="yearBreakdow">
+            <h2 class="text-center mb-3"><i class="fas fa-chart-line"></i> Year Amount</h2>
+            <div class="row" id="breakdow"></div>
+        </div>
+    </div>
 
-        <footer class="col-md-12 mt-3">
-            <p class="text-center">
-                Copyright&copy;
-                <a href="http://jaiimeriios.com/">Jaime Alejandro Rios</a>
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>
-            </p>
-        </footer>
+    <footer class="col-md-12 mt-3">
+        <p class="text-center">
+            Copyright&copy;
+            <a href="http://jaiimeriios.com/">Jaime Alejandro Rios</a>
+            <script>
+                document.write(new Date().getFullYear())
+            </script>
+        </p>
+    </footer>
 
-        <script src="js/script.js"></script>
-        <script src="dependency/chartjs.min.js"></script>
-    </body>
+    <script src="dependency/chartjs.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
 </html>
