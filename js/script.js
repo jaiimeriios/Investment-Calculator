@@ -23,29 +23,40 @@ function calculate(e) {
         return
     }
 
-    let breakdow = document.querySelector('#breakdow')
+    removePreviousNumbers()
 
-    // if (breakdow.hasChildNodes()){    
-    //     breakdow.remove(newDiv)
-    // }
-    
     // Loop through items to update starting balance and build 
     for (let i = 1; i <= duration * 12; i++) {
-
-        startingBalance = startingBalance * (1 + monthlyReturn) + monthlyDeposit
+        
         var newDiv = document.createElement('p');
+        
+        startingBalance = startingBalance * (1 + monthlyReturn) + monthlyDeposit
         newDiv.classList = 'col-md-2'
-
+        
         if (i % 12 === 0) {
+            
             const year = i / 12
             balances.push(startingBalance.toFixed(2))
+            
             labels.push(`Year ${year}`)
             newDiv.innerHTML =
             `Year ${year} <span>$` +  startingBalance.toFixed(2) + `</span>`
             breakdow.appendChild(newDiv)
         }
     }
+    
     showGrowthDiv(startingBalance, duration, labels, balances)
+}
+
+
+
+function removePreviousNumbers() {
+
+    document.querySelectorAll('#breakdow p').forEach(
+        (elem) => {
+            elem.style.display = 'none'
+        }
+    )
 }
 
 

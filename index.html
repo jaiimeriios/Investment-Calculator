@@ -29,19 +29,19 @@
               <div class="row">
                 <div class="col-sm-6 col-md-3">
                   <label for="startingBal"><i class="fas fa-dollar-sign"></i> Starting Balance</label>
-                <input type="number" class="form-control" id="startingBalance" value="1000">
+                <input type="number" class="form-control" id="startingBalance" value="1000" min="1" max="999999999">
               </div>
               <div class="col-sm-6 col-md-3">
                 <label for="expectedReturn"><i class="fas fa-percentage"></i> Expected Return (%)</label>
-                <input type="number" class="form-control" id="expectedReturn" value="6">
+                <input type="number" class="form-control" id="expectedReturn" value="6" min="1" max="100">
               </div>
               <div class="col-sm-6 col-md-3">
                 <label for="monthlyDep"><i class="far fa-calendar-alt"></i> Monthly Deposit</label>
-                <input type="number" class="form-control" id="monthlyDeposit" value="100">
+                <input type="number" class="form-control" id="monthlyDeposit" value="100" min="1" max="999999999">
               </div>
               <div class="col-sm-6 col-md-3">
                 <label for="duration"><i class="far fa-clock"></i> Duration (years)</label>
-                <input type="number" class="form-control" id="duration" value="5" />
+                <input type="number" class="form-control" id="duration" value="5" min="1" max="999">
               </div>
             </div>
             <div class="row mt-4">
