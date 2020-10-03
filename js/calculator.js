@@ -52,7 +52,7 @@ function buildValues(labels, balances, duration, startingBalance, monthlyReturn,
 
         startingBalance = startingBalance * (1 + monthlyReturn) + monthlyDeposit
         const newDiv = document.createElement('p');
-        newDiv.classList = 'col-md-2'
+        newDiv.classList = 'text-center col-sm-4 col-md-3'
 
         if (i % 12 === 0) {
             const year = i / 12
